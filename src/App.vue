@@ -1,32 +1,35 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+<div>
+  <div v-for="(genre, index) in genres.genres" > {{genre.id}} - {{genre.name}} </div>
+  <div v-for="(movie, index) in movies.results"> {{movie.title}} - {{movie.original_title}}</div>
+
   </div>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>
+
+<script>
+import Axios from 'axios'
+
+export default {
+  data() {
+    return{
+      genres: '',
+      movies: ''
+    }
+  },
+  created() {
+    Axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=8e409bf9750ad60d1f84b3c57bb5bcdd&language=ru-RU')
+    .then(response => {
+  this.genres = response.data
+  });
+  Axios.get('https://api.themoviedb.org/3/movie/popular?api_key=8e409bf9750ad60d1f84b3c57bb5bcdd&language=ru-RU&page=1&region=ru')
+    .then(response => {
+  this.movies = response.data
+  })
+  
+}
+}
+</script>
