@@ -202,17 +202,20 @@
         border:1px solid rgba(211, 202, 202,0.5);
       }
   
-    .titleImgContainer {
-      padding:15px 15px;
-      display:flex;
-      justify-content: center;
-      .titleImg {
-        width: 100%;
+        .titleImgContainer {
+          padding:15px 15px;
+          display:flex;
+          justify-content: center;
+            .titleImg {
+              width: 100%;
+        }
       }
     }
+  }
 }
-
-    }
+  ::-webkit-scrollbar {
+    width: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
 }
 @media screen and (max-width: 800px) {
   #mainContainer {
