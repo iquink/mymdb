@@ -161,7 +161,7 @@
 }
 
 #mainContainer {
-  padding: 10px 5%;
+  padding: 0px 5%;
   color:#000000;
   grid-area: main;
   overflow-y: scroll;
@@ -170,6 +170,7 @@
   
 
     #main {
+    padding:10px 0; 
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 15px;
     width: 100%;
