@@ -79,7 +79,7 @@
           <p class="genre">
             Жанр:
             <span v-for="(genre,i) in movie.genres" :key="i">
-              <b>{{ genre.name }}</b>
+              <b>{{ genre.name }} </b>
             </span>
           </p>
           <div>
