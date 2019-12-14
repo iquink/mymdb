@@ -52,7 +52,13 @@
     </div>
     <div id="mainContainer">
       <main id="main" class="dgrid">
-        <div class="itemCard" v-b-modal="modalId(i)" v-show="movie.show" v-for="(movie,i) in movies" :key="i">
+        <div
+          class="itemCard"
+          v-b-modal="modalId(i)"
+          v-show="movie.show"
+          v-for="(movie,i) in movies"
+          :key="i"
+        >
           <p class="title">{{ movie.title }} ({{movie.release_date.substring(0,4)}})</p>
           <div class="titleImgContainer">
             <img
@@ -73,11 +79,17 @@
           <p class="genre">
             Жанр:
             <span v-for="(genre,i) in movie.genres" :key="i">
-              <b>{{ genre.name }} </b>
+              <b>{{ genre.name }}</b>
             </span>
           </p>
           <div>
-            <b-modal id="modal-xl" size="xl" v-bind:id="'modal' + i" v-bind:title="movie.title" hide-footer="true">
+            <b-modal
+              id="modal-xl"
+              size="xl"
+              v-bind:id="'modal' + i"
+              v-bind:title="movie.title"
+              hide-footer="true"
+            >
               <div class="modalItemCard">
                 <div class="titleImgContainer">
                   <img
@@ -87,28 +99,35 @@
                   />
                 </div>
                 <div class="modalDescriptionContainer">
-                <p class="releaseDate">
-                  Дата релиза:
-                  <b>{{ movie.release_date }}</b>
-                </p>
-                <p class="director">
-                  Режиссёр:
-                  <b>{{ movie.director }}</b>
-                </p>
-                <hr />
-                <p class="cast">
-                  В ролях:
-                  <span v-for="(cast,i) in movie.cast" :key="i">
-                    <b>{{ cast }}, </b>
-                  </span>
-                </p>
-                <hr />
-                <p class="genre">
-                  Жанр:
-                  <span v-for="(genre,i) in movie.genres" :key="i">
-                    <b>{{ genre.name }} </b>
-                  </span>
-                </p>
+                  <p class="releaseDate">
+                    Дата релиза:
+                    <b>{{ movie.release_date }}</b>
+                  </p>
+                  <hr />
+                  <p class="director">
+                    Режиссёр:
+                    <b>{{ movie.director }}</b>
+                  </p>
+                  <hr />
+                  <p class="cast">
+                    В ролях:
+                    <span v-for="(cast,i) in movie.cast" :key="i">
+                      <b>{{ cast }},</b>
+                    </span>
+                  </p>
+                  <hr />
+                  <p class="genre">
+                    Жанр:
+                    <span v-for="(genre,i) in movie.genres" :key="i">
+                      <b>{{ genre.name }}</b>
+                    </span>
+                  </p>
+                  <hr />
+                  <p class="cast">
+                    Описание:
+                      <i><strong>{{ movie.overview }}</strong></i>
+                    </span>
+                  </p>
                 </div>
               </div>
             </b-modal>
@@ -141,33 +160,30 @@
   .modalItemCard {
     flex-direction: column;
 
-      .titleImgContainer {
-        display:flex;
-        justify-content: center;
-      }
-      .modalDescriptionContainer {
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
+    .titleImgContainer {
+      display: flex;
+      justify-content: center;
+    }
+    .modalDescriptionContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }
 @media screen and (max-width: 991px) {
-
   .modalItemCard {
     flex-direction: column;
 
-      .titleImgContainer {
-        display:flex;
-        justify-content: center;
-      }
-      .modalDescriptionContainer {
-        display:flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
+    .titleImgContainer {
+      display: flex;
+      justify-content: center;
+    }
+    .modalDescriptionContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 }
 .dgrid {
@@ -250,27 +266,23 @@
 }
 
 .modalItemCard {
-  display:flex;
+  display: flex;
 
   div {
     padding: 0 1%;
   }
-  
 }
 #mainContainer {
   padding: 0px 5%;
   color: #000000;
   grid-area: main;
-  
 
   #main {
-
-    display:grid;
+    display: grid;
     padding: 10px 0;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 15px;
     width: 100%;
-
 
     .itemCard {
       width: 100%;
@@ -278,8 +290,6 @@
       background: #f3efef;
       display: flex;
       flex-direction: column;
-
-
 
       .title {
         height: 40px;
@@ -302,7 +312,7 @@
       hr {
         width: 90%;
         border: 1px solid rgba(211, 202, 202, 0.5);
-        margin:0;
+        margin: 0;
       }
 
       .titleImgContainer {
