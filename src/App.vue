@@ -358,13 +358,15 @@ export default {
       "https://api.themoviedb.org/3/genre/movie/list?api_key=8e409bf9750ad60d1f84b3c57bb5bcdd&language=ru-RU"
     ).then(response => {
       this.genres = response.data.genres;
-      this.genres.unshift({ id: 0, name: "Показать все" });
+      this.genres.unshift({ id: 0, name: "Показать все" }); //Нужно для работы select'а - сбрасывает сортировку фильмов. 
     });
     Axios.get(
       "https://api.themoviedb.org/3/movie/popular?api_key=8e409bf9750ad60d1f84b3c57bb5bcdd&language=ru-RU&page=1&region=ru"
     ).then(response => {
+      //Получаем жанры фильмов 
       let results = response.data.results;
       let genres = this.genres;
+      //Вставляем жанры в каждый фильм
       let popularMovies = results;
       for (let pm of popularMovies) {
         let ids = pm.genre_ids;
@@ -374,6 +376,7 @@ export default {
             filteredGenres.push(g);
           }
         }
+        //Добавляем значения, важные для сортировки и видимости при живом поиске
         pm.genres = filteredGenres;
         pm.show = true;
         pm.sorted = true;
@@ -382,6 +385,7 @@ export default {
         pm.director = "";
         pm.cast = [];
       }
+      //Получаем актёрский состав и режиссёра, вставляем в  каждый фильм
       this.movies = popularMovies;
       let movies = this.movies;
       let director = [];
@@ -411,6 +415,7 @@ export default {
     modalId(i) {
       return "modal" + i;
     },
+    //Живой поиск по режиссёру
     sortDirector: function() {
       let director = this.directorSelected.toLowerCase();
       let movies = this.movies;
@@ -427,6 +432,7 @@ export default {
       }
       this.movies = movies;
     },
+    //Сортировка по жанру
     sortGenre: function() {
       this.directorSelected = "";
       this.castSelected = "";
@@ -454,6 +460,7 @@ export default {
       }
       this.movies = movies;
     },
+    //Живой поиск по актёрам
     sortCast: function() {
       let castSelected = this.castSelected.toLowerCase();
       let movies = this.movies;
